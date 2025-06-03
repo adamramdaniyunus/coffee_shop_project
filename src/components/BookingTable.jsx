@@ -1,13 +1,20 @@
 import { BsCalendar, BsClock, BsPeopleFill } from 'react-icons/bs'
 import Button from './ui/button.ui'
 import LabelFlag from './ui/label.ui'
+import { motion } from 'framer-motion'
+import { bounceIn } from '../libs/animationFadeUp'
 
 const apikey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 const BookingTable = () => {
     return (
         <div>
-            <div className='flex justify-center items-center flex-col md:flex-row'>
+            <motion.div
+                variants={bounceIn}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, type: "spring", bounce: 0.3 }} className='flex justify-center items-center flex-col md:flex-row'>
                 {/* Map Section */}
                 <div className="w-full md:w-1/3 h-96 md:h-[450px] relative">
                     <iframe
@@ -66,7 +73,7 @@ const BookingTable = () => {
                         </form>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 }

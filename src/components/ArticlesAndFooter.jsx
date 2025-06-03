@@ -13,6 +13,8 @@ import { MdEmail } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
 import { ArrowUp } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { containerVariants, fadeIn } from '../libs/animationFadeUp'
 
 const ArticlesAndFooter = () => {
 
@@ -37,11 +39,16 @@ const ArticlesAndFooter = () => {
                         <Title isUppercase>our blogs & articles</Title>
                     </div>
 
-                    {/* Product Cards */}
-                    <div className="flex flex-wrap gap-10 justify-center items-center mt-10">
+                    <motion.div
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.3 }}
+                        className="flex flex-wrap gap-10 justify-center items-center mt-10">
                         {[1, 2, 3].map((item) => (
-                            <div
+                            <motion.div
                                 key={item}
+                                variants={fadeIn}
                                 className="flex flex-col gap-2 h-full w-full group: max-w-[350px] bg-black/50 rounded-sm hover:bg-black/70 hover:scale-105 transition-all duration-300 ease-in-out">
                                 <img src={images[item]} alt="" className='max-h-[200px] w-full object-cover rounded-sm' />
                                 <div className='p-2 flex flex-col gap-2'>
@@ -55,9 +62,9 @@ const ArticlesAndFooter = () => {
                                         read more
                                     </p>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
 
                     {/* Footer Section*/}
 

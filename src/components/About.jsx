@@ -3,10 +3,18 @@ import LabelFlag from './ui/label.ui';
 import SubTitle from './ui/subtitle.ui';
 import Paragraph from './ui/paragrap.ui';
 import Button from './ui/button.ui';
+import { motion } from "framer-motion";
+import { bounceIn } from "../libs/animationFadeUp";
 
 const About = () => {
     return (
-        <div className="flex w-full md:flex-row flex-col md:mt-[430px] mt-10 justify-center">
+        <motion.div
+            variants={bounceIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, type: "spring", bounce: 0.3 }}
+            className="flex w-full md:flex-row flex-col md:mt-[430px] mt-10 justify-center">
             <div className="md:w-1/3 w-full h-[550px]">
                 <img src={coffeeImgFour} alt="capuccino" className="w-full h-full object-cover" />
             </div>
@@ -32,7 +40,7 @@ const About = () => {
                     </Button>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

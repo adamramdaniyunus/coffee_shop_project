@@ -6,6 +6,10 @@ import Button from "./ui/button.ui";
 import SubTitle from "./ui/subtitle.ui";
 import Title from "./ui/title.ui";
 import Paragraph from "./ui/paragrap.ui";
+import { motion } from "framer-motion";
+import { containerVariants, fadeDown, fadeLeft } from "../libs/animationFadeUp";
+
+
 export default function Hero() {
     return (
         <>
@@ -25,7 +29,14 @@ export default function Hero() {
                 </div>
 
                 {/* Text Content */}
-                <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-2 gap-10">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                        duration: 0.4,
+                        scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+                    }}
+                    className="relative z-10 max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="text-white mt-24">
                         <span className="text-primary font-semibold text-sm tracking-wide">
                             ☕ New Seasonal Blend!
@@ -45,12 +56,22 @@ export default function Hero() {
                             </Button>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Floating Cards */}
-                <div className="absolute bottom-[-320px] w-full z-20 md:flex hidden justify-center gap-6">
+                <motion.div
+                    className="absolute bottom-[-320px] w-full z-20 md:flex hidden justify-center gap-6"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                >
                     {[coffeeImgOne, coffeeImgTwo, coffeeImgThree].map((img, index) => (
-                        <div key={index} className="group h-[350px] w-[350px] rounded-lg relative overflow-hidden shadow-xl bg-black/40 backdrop-blur-sm">
+                        <motion.div
+                            key={index}
+                            variants={fadeDown}
+                            className="group h-[350px] w-[350px] rounded-lg relative overflow-hidden shadow-xl bg-black/40 backdrop-blur-sm"
+                        >
                             {/* Overlay */}
                             <div className="absolute inset-0 bg-black/50 transition duration-300 group-hover:bg-black/10 z-20" />
 
@@ -73,7 +94,6 @@ export default function Hero() {
                                         </Paragraph>
                                     </>
                                 )}
-
                                 {index === 1 && (
                                     <>
                                         <h1 className="text-lg font-semibold">Warm & Cozy Moments</h1>
@@ -82,7 +102,6 @@ export default function Hero() {
                                         </Paragraph>
                                     </>
                                 )}
-
                                 {index === 2 && (
                                     <>
                                         <h1 className="text-lg font-semibold">Perfectly Ground Beans</h1>
@@ -92,14 +111,19 @@ export default function Hero() {
                                     </>
                                 )}
                             </div>
-
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
+
             </section>
-            <div className="mt-5 full z-20 md:hidden flex px-4 flex-wrap justify-center gap-6">
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                className="mt-5 full z-20 md:hidden flex px-4 flex-wrap justify-center gap-6">
                 {[coffeeImgOne, coffeeImgTwo, coffeeImgThree].map((img, index) => (
-                    <div key={index} className="group h-[500px] w-full rounded-lg relative overflow-hidden shadow-xl bg-black/40 backdrop-blur-sm">
+                    <motion.div key={index} variants={fadeLeft} className="group h-[500px] w-full rounded-lg relative overflow-hidden shadow-xl bg-black/40 backdrop-blur-sm">
                         {/* Overlay */}
                         <div className="absolute inset-0 bg-black/50 transition duration-300 group-hover:bg-black/10 z-20" />
 
@@ -122,9 +146,9 @@ export default function Hero() {
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, impedit!
                             </p>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </>
     );
 }
