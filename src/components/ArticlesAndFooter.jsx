@@ -15,6 +15,7 @@ import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
 import { ArrowUp } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { containerVariants, fadeIn } from '../libs/animationFadeUp'
+import {Link as ScrollLink} from 'react-scroll'
 
 const ArticlesAndFooter = () => {
 
@@ -28,6 +29,7 @@ const ArticlesAndFooter = () => {
         <div
             className="mt-40 relative w-full bg-cover bg-center"
             style={{ backgroundImage: `url(${background})` }}
+            id='articles-footer'
         >
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/70" />
@@ -84,7 +86,7 @@ const ArticlesAndFooter = () => {
                             <div className='flex flex-col items-start gap-4 max-w-lg'>
                                 <Link
                                     to="/"
-                                    className="text-primary text-2xl font-bold tracking-wide"
+                                    className="text-primary text-2xl font-bold tracking-wide font-main"
                                 >
                                     CoffeeShop
                                 </Link>
@@ -112,21 +114,28 @@ const ArticlesAndFooter = () => {
                         <div className='flex md:items-center flex-col md:flex-row justify-between gap-4 mt-10 w-full'>
                             <div className='flex flex-col items-start gap-4 max-w-lg'>
                                 <ul className='text-sm text-white/50 flex md:flex-row flex-col gap-10 uppercase'>
-                                    <li className='hover:text-white transition-colors duration-300 cursor-pointer'>Home</li>
-                                    <li className='hover:text-white transition-colors duration-300 cursor-pointer'>About Us</li>
-                                    <li className='hover:text-white transition-colors duration-300 cursor-pointer'>Menu</li>
-                                    <li className='hover:text-white transition-colors duration-300 cursor-pointer'>Products</li>
-                                    <li className='hover:text-white transition-colors duration-300 cursor-pointer'>Contact</li>
+                                    <li className='hover:text-white transition-colors duration-300 cursor-pointer'>
+                                        <ScrollLink to="hero" smooth duration={500}>Home</ScrollLink>
+                                    </li>
+                                    <li className='hover:text-white transition-colors duration-300 cursor-pointer'>
+                                        <ScrollLink to="about" smooth duration={500}>About Us</ScrollLink>
+                                    </li>
+                                    <li className='hover:text-white transition-colors duration-300 cursor-pointer'>
+                                        <ScrollLink to="product-list" smooth duration={500}>Products</ScrollLink>
+                                    </li>
+                                    <li className='hover:text-white transition-colors duration-300 cursor-pointer'>
+                                        <ScrollLink to="articles-footer" smooth duration={500}>Contact</ScrollLink>
+                                    </li>
                                 </ul>
                             </div>
 
                             <div className='flex justify-end items-center gap-4'>
-                                <button className='flex uppercase items-center gap-1 text-md text-white/50 hover:text-white transition-colors duration-300 cursor-pointer'>
+                                <ScrollLink to='hero' smooth duration={500} className='flex uppercase items-center gap-1 text-md text-white/50 hover:text-white transition-colors duration-300 cursor-pointer'>
                                     go top
                                     <span className='text-xs'>
                                         <ArrowUp />
                                     </span>
-                                </button>
+                                </ScrollLink>
                             </div>
                         </div>
                     </div>

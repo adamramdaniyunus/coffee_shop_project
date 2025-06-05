@@ -13,7 +13,7 @@ import { containerVariants, fadeDown, fadeLeft } from "../libs/animationFadeUp";
 export default function Hero() {
     return (
         <>
-            <section className="relative w-full h-[720px]">
+            <section className="relative w-full h-[720px]" id="hero">
                 {/* Background Image and Gradient */}
                 <div className="absolute inset-0 z-0">
                     <img

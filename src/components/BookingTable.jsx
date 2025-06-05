@@ -8,7 +8,7 @@ const apikey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 const BookingTable = () => {
     return (
-        <div>
+        <div id='booking-table'>
             <motion.div
                 variants={bounceIn}
                 initial="hidden"
@@ -45,6 +45,7 @@ const BookingTable = () => {
                                     type="text"
                                     placeholder="4 Person"
                                     className="w-full h-full focus:outline-none bg-transparent text-white placeholder-gray-400"
+                                    style={{width: '100%'}}
                                 />
                                 <BsPeopleFill className='w-10' />
                             </div>
@@ -53,6 +54,7 @@ const BookingTable = () => {
                                     type="date"
                                     placeholder="4 Person"
                                     className="w-full h-full focus:outline-none bg-transparent text-white placeholder-gray-400"
+                                    style={{width: '100%'}}
                                 />
                                 <BsCalendar className='w-10' />
                             </div>
@@ -61,6 +63,7 @@ const BookingTable = () => {
                                     type="time"
                                     placeholder="4 Person"
                                     className="w-full h-full focus:outline-none bg-transparent text-white placeholder-gray-400"
+                                    style={{width: '100%'}}
                                 />
                                 <BsClock className='w-10' />
                             </div>

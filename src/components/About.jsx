@@ -9,6 +9,7 @@ import { bounceIn } from "../libs/animationFadeUp";
 const About = () => {
     return (
         <motion.div
+            id="about"
             variants={bounceIn}
             initial="hidden"
             whileInView="visible"

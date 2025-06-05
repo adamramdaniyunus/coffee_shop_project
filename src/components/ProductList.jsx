@@ -6,12 +6,14 @@ import Button from './ui/button.ui'
 import CustomerReviewCarousel from './CustomerReview'
 import { motion } from 'framer-motion'
 import { containerVariants, fadeUp } from '../libs/animationFadeUp'
+import { BsCart, BsEye, BsHeart, BsHeartFill } from 'react-icons/bs'
 
 const ProductList = () => {
     return (
         <div
             className="mt-40 mb-20 relative w-full bg-cover bg-center"
             style={{ backgroundImage: `url(${background})` }}
+            id='product-list'
         >
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/70" />
@@ -39,8 +41,19 @@ const ProductList = () => {
                             <motion.div
                                 key={item}
                                 variants={fadeUp}
-                                className="bg-white/10 backdrop-blur-sm rounded-sm p-10 flex justify-between items-center md:max-w-[350px] group"
+                                className="bg-white/10 backdrop-blur-sm rounded-sm p-10 flex justify-between items-center md:max-w-[350px] group relative"
                             >
+                                <div className="absolute top-4 left-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                                    <button className="text-white p-3 flex items-center justify-center rounded-full bg-secondary hover:bg-secondary/80 text-2xl transition-colors">
+                                        <BsHeart />
+                                    </button>
+                                    <button className="text-white p-3 flex items-center justify-center rounded-full bg-secondary hover:bg-secondary/80 text-2xl transition-colors">
+                                        <BsEye />
+                                    </button>
+                                    <button className="text-white p-3 flex items-center justify-center rounded-full bg-secondary hover:bg-secondary/80 text-2xl transition-colors">
+                                        <BsCart />
+                                    </button>
+                                </div>
                                 <div className="flex flex-col max-w-full items-center justify-center gap-2">
                                     <img
                                         src={product}
